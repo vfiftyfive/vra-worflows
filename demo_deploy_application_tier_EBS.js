@@ -133,19 +133,20 @@ if (configSecPolicy == 'true')
 }
 
 System.log("List of variables: handle=" + handle + " tenantName=" + tenantName + " appProfName=" + appProfName + " epgName=" + epgName + " bdName=" + bdName + " ctxName=" + ctxName + " epgSubnet=" + epgSubnet + " dvsName=" + dvsName + " vpcPlan=" + vpcPlan); 
-var response = apicHelper.addNetwork(handle,	// handle
-                                 tenantName, 	// Tenant
-                                 appProfName,	// AP
-                                 epgName, 	// EPG
-                                 bdName,     // BD
-                                 ctxName,	// CTX
-                                 epgSubnet, 	// Subnet
-                                 dvsName,	// DVS/Domain
-                                 true,          // vmmDomain
-                                 vpcPlan,
-								 false,
-								 false,
-								 'vlan');	// VPC network
+var response = apichelper.addnetwork(handle,	// handle
+                                    tenantname, 	// tenant
+                                    appprofname,	// ap
+                                    epgname,     // epg
+                                    bdname,      // bd
+                                    ctxname,     // ctx
+                                    epgsubnet, 	// subnet
+                                    dvsname,     // dvs/domain
+                                    true,        // vmmdomain
+                                    vpcplan,
+                                    false,
+                                    false,
+                                    'vlan' );	// vpc network
+
 
 if (response.result == "FAIL")
 {
@@ -166,23 +167,23 @@ if (configSecPolicy == 'true')
 		System.log('Name of filter is ' + filterName);
         var contractName = appProfName + "_" + consumerL3ext + "_" + epgName;
 		System.log('Name of Contract is ' + contractName);
-        System.getModule("com.cisco.nvermand").applyContract(apicName,
-																 true, 
-																 false,
-																 tenantName,
-																 appProfName,
-																 epgName,
-																 "",
-																 contractName,
-																 consumerL3ext,
-																 l3extInstp,
-																 filterName,
-																 secDstPortStart,
-																secDstPortEnd,
-																 "unspecified",
-																 "unspecified",
-																 secProtocol,
-																 secEtherType);
+    System.getModule("com.cisco.nvermand").applyContract(apicName,
+                                                        true,
+                                                        false,
+                                                        tenantName,
+                                                        appProfName,
+                                                        epgName,
+                                                        "",
+                                                        contractName,
+                                                        consumerL3ext,
+                                                        l3extInstp,
+                                                        filterName,
+                                                        secDstPortStart,
+                                                        secDstPortEnd,
+                                                        "unspecified",
+                                                        "unspecified",
+                                                        secProtocol,
+                                                        secEtherType);
 }
 
     else if (consumerEpg)
